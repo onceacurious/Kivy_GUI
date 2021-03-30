@@ -15,9 +15,9 @@ class AuthLayout(GridLayout):
         self.singinLbl.color = "#3485fdff"
 
         self.inputLayout = gridlayout.GridLayout()
-        
+
         self.inputLayout.cols = 2
-        self.inputLayout.rows = 3
+        self.inputLayout.rows = 2
         self.inputLayout.padding = 5, 5, 5, 5
         self.inputLayout.spacing = 5
 
@@ -26,16 +26,27 @@ class AuthLayout(GridLayout):
 
         self.usernameInput = textinput.TextInput(text="Username")
 
-        self.inputLayout.add_widget(self.usernameLbl)
-        self.inputLayout.add_widget(self.usernameInput)
-        
         self.passwordLbl = label.Label(text="Password:")
         self.passwordLbl.font_size = 16
-        
+
         self.passwordInput = textinput.TextInput(text="Password")
 
-        self.inputLayout.add_widget(self.passwordLbl)
-        self.inputLayout.add_widget(self.passwordInput)
+        self.inputLblLayout = GridLayout()
+        self.inputLblLayout.cols = 1
+        self.inputLblLayout.rows = 2
+        # self.inputLblLayout.col_default_width = 50
+        self.inputLblLayout.add_widget(self.usernameLbl)
+        self.inputLblLayout.add_widget(self.passwordLbl)
+
+        self.inputTextLayout = GridLayout()
+        self.inputTextLayout.cols = 1
+        self.inputTextLayout.rows = 2
+        self.inputTextLayout.col_default_width = 200
+        self.inputTextLayout.add_widget(self.usernameInput)
+        self.inputTextLayout.add_widget(self.passwordInput)
+
+        self.inputLayout.add_widget(self.inputLblLayout)
+        self.inputLayout.add_widget(self.inputTextLayout)
 
         self.submitBtn = button.Button(text="SUBMIT")
         self.cancelBtn = button.Button(text="CANCEL")
@@ -67,6 +78,3 @@ class AuthLayout(GridLayout):
         self.add_widget(self.singinLbl)
         self.add_widget(self.inputLayout)
         self.add_widget(self.bottomLayout)
-
-
-        
